@@ -2,51 +2,35 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChatContainer from './components/ChatContainer';
 import Sidebar from './components/Sidebar';
+import StorageService from './services/storageService';
 
 // Gemini API configuration
-const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
-const API_URL = process.env.REACT_APP_GEMINI_API_URL;
+const API_KEY = "AIzaSyDEniRVoeXbxN_veHK-JdjGSkXH441gAT0";
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
 
-  // Load chat history from localStorage on component mount
+  // Load chat history on component mount
   useEffect(() => {
-    const savedHistory = localStorage.getItem('chatHistory');
-    if (savedHistory) {
-      try {
-        const parsedHistory = JSON.parse(savedHistory);
-        setChatHistory(parsedHistory);
-      } catch (error) {
-        console.error('Error loading chat history:', error);
-        localStorage.removeItem('chatHistory');
-      }
+    const savedHistory = StorageService.getChatHistory();
+    if (savedHistory.length > 0) {
+      setChatHistory(savedHistory);
     }
   }, []);
 
-  // Save chat history to localStorage whenever it changes
+  // Save chat history whenever it changes
   useEffect(() => {
-    try {
-      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-    } catch (error) {
-      console.error('Error saving chat history:', error);
-      // If storage is full, remove oldest chats
-      if (error.name === 'QuotaExceededError') {
-        const reducedHistory = chatHistory.slice(0, Math.floor(chatHistory.length / 2));
-        localStorage.setItem('chatHistory', JSON.stringify(reducedHistory));
-        setChatHistory(reducedHistory);
-      }
+    if (chatHistory.length > 0) {
+      StorageService.saveChatHistory(chatHistory);
     }
   }, [chatHistory]);
 
   const handleNewChat = () => {
-    // Only save current chat to history if it's not empty and not already saved
-    if (messages.length > 0 && !chatHistory.some(chat => 
-      chat.messages.length === messages.length && 
-      chat.messages.every((msg, i) => msg.text === messages[i].text)
-    )) {
+    // Save current chat to history if it's not empty
+    if (messages.length > 0) {
       const newChat = {
         id: Date.now(),
         title: messages[0].text.substring(0, 30) + '...',
