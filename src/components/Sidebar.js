@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css';
 
 function Sidebar({ onNewChat, chatHistory, onLoadChat, onDeleteChat }) {
+  const [isNewChatLoading, setIsNewChatLoading] = useState(false);
+  
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  const handleNewChatClick = () => {
+    if (isNewChatLoading) return;
+    
+    setIsNewChatLoading(true);
+    onNewChat();
+    
+    // Reset loading state after a delay
+    setTimeout(() => {
+      setIsNewChatLoading(false);
+    }, 500);
+  };
+
   return (
     <div className="sidebar">
       <div className="new-chat">
-        <button onClick={onNewChat} className="new-chat-button">
-          <i className="fas fa-plus"></i> New Chat
+        <button 
+          onClick={handleNewChatClick} 
+          className={`new-chat-button ${isNewChatLoading ? 'loading' : ''}`}
+          disabled={isNewChatLoading}
+        >
+          {isNewChatLoading ? (
+            <i className="fas fa-spinner fa-spin"></i>
+          ) : (
+            <i className="fas fa-plus"></i>
+          )} New Chat
         </button>
       </div>
       <div className="chat-history">
