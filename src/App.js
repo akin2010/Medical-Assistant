@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar';
 import StorageService from './services/storageService';
 
 // Gemini API configuration
-const API_KEY = "AIzaSyDEniRVoeXbxN_veHK-JdjGSkXH441gAT0";
+const API_KEY = "YOUR-API";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 function App() {
