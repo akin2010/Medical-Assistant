@@ -9,7 +9,7 @@ const OPENFDA_API_URL = "https://api.fda.gov/drug/label.json";
 const ICD10_API_URL = "https://www.icd10api.com/api/v1/icd10/codes/search";
 
 // Gemini API configuration
-const API_KEY = "AIzaSyDEniRVoeXbxN_veHK-JdjGSkXH441gAT0";
+const API_KEY = "Your-API";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 // Medical information templates
