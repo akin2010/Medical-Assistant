@@ -1,112 +1,42 @@
 # Medical AI Assistant
 
-A React-based medical AI assistant that provides information about medical conditions, symptoms, and general health advice using the Gemini API.
+A React-based web application that provides medical information and advice through an AI-powered chat interface. This application leverages Google's Gemini API to deliver informative responses about symptoms, treatments, medications, and lifestyle changes related to medical conditions.
 
 ## Features
 
-- Real-time chat interface with AI responses
-- Medical information retrieval from OpenFDA and ICD-10 APIs
-- Chat history management with local storage
-- Responsive design for all devices
-- Comfortable red color scheme
-- Message formatting with markdown support
+- **AI-powered Medical Chat**: Get detailed information about medical conditions and symptoms
+- **Chat History**: Save and browse previous conversations
+- **Persistent Storage**: Conversations are saved in browser storage
+- **Responsive Design**: Works on both desktop and mobile devices
+- **Backup System**: Automatic backup of chat data to prevent loss
+- **Markdown-style Formatting**: Responses include formatted text with headings, lists, and emphasis
 
-## Prerequisites
+## Technologies Used
 
-- Node.js (v14.0.0 or higher)
-- npm (v6.0.0 or higher)
-- Google Gemini API key
-- OpenFDA API access
-- ICD-10 API access
+- [React](https://reactjs.org/) - Frontend framework
+- [Google Gemini API](https://ai.google.dev/) - AI model for generating responses
+- [OpenFDA API](https://api.fda.gov/) - For medication information
+- [ICD-10 API](https://www.icd10api.com/) - For medical condition codes
+- localStorage/sessionStorage - For persistent data storage
+- [Font Awesome](https://fontawesome.com/) - For UI icons
 
-## Installation
+## Installation and Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/medical-ai-assistant.git
-cd medical-ai-assistant
-```
-
+1. Clone the repository
 2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the root directory with your API keys:
-```
-REACT_APP_GEMINI_API_KEY=your_gemini_api_key
-REACT_APP_OPENFDA_API_KEY=your_openfda_api_key
-REACT_APP_ICD10_API_KEY=your_icd10_api_key
-```
-
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the root directory and add your values for the following variables:
+   ```env
+   REACT_APP_GEMINI_API_KEY=your_gemini_api_key
+   REACT_APP_OPENFDA_API_KEY=your_openfda_api_key
+   REACT_APP_ICD10_API_KEY=your_icd10_api_key
+   ```
 4. Start the development server:
-```bash
-npm start
-```
+   ```bash
+    npm start
+    ```
 
-The application will be available at `http://localhost:3000`.
-
-## Usage
-
-1. Start a new chat by clicking the "New Chat" button
-2. Type your medical question or describe your symptoms
-3. The AI will respond with relevant medical information
-4. View your chat history in the sidebar
-5. Load or delete previous chats as needed
-
-## Project Structure
-
-```
-medical-ai-assistant/
-├── public/
-│   ├── index.html
-│   └── manifest.json
-├── src/
-│   ├── components/
-│   │   ├── ChatContainer.js
-│   │   ├── ChatContainer.css
-│   │   ├── Sidebar.js
-│   │   └── Sidebar.css
-│   ├── services/
-│   │   └── storageService.js
-│   ├── App.js
-│   ├── App.css
-│   └── index.js
-├── .env
-├── package.json
-├── README.md
-└── requirements.txt
-```
-
-## API Integration
-
-The application integrates with three APIs:
-1. Google Gemini API for AI responses
-2. OpenFDA API for drug information
-3. ICD-10 API for medical condition codes
-
-## Storage
-
-Chat history and settings are stored locally using:
-- localStorage for persistent chat history
-- sessionStorage for current chat session
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Disclaimer
-
-This application provides general medical information only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-
-## Note
-
-Make sure to keep your API key secure and never share it publicly.
+## Important Notice
+This application responses are for educational purposes only. Always consult healthcare professionals for medical advice.

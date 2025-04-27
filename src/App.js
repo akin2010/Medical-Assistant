@@ -4,13 +4,15 @@ import ChatContainer from './components/ChatContainer';
 import Sidebar from './components/Sidebar';
 import StorageService from './services/storageService';
 
+import env from "react-dotenv";
+
 // OpenFDA and ICD-10 API URLs
-const OPENFDA_API_URL = "https://api.fda.gov/drug/label.json";
-const ICD10_API_URL = "https://www.icd10api.com/api/v1/icd10/codes/search";
+const OPENFDA_API_URL = env.OPENFDA_API_URL || "https://api.fda.gov/drug/label.json";
+const ICD10_API_URL = env.ICD10_API_URL || "https://www.icd10api.com/api/v1/icd10/codes/search";
 
 // Gemini API configuration
-const API_KEY = "Your-API";
-const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+const API_KEY = env.GEMINI_API_KEY || "YOUR-API";
+const API_URL = env.GEMINI_API_URL || "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 // Medical information templates
 const MEDICAL_TEMPLATES = {
@@ -210,6 +212,8 @@ function App() {
               Include specific details about symptoms, their severity, and how they might progress.
               For treatments, explain both conventional medical approaches and complementary options.
               Only include a brief medical disclaimer at the end of your response.
+
+              You must keep your short and concise, and avoid unnecessary details. Don't yawn or use filler words.
               
               Previous conversation context:
               ${JSON.stringify(chatContext)}
