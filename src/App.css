@@ -16,4 +16,73 @@
   .app {
     flex-direction: column;
   }
+}
+
+/* Update primary colors from blue to red */
+:root {
+  --primary-color: #e63946;  /* Comfortable red */
+  --primary-light: #ffcdd2;  /* Light red */
+  --primary-dark: #c62828;   /* Dark red */
+  --primary-hover: #d32f2f;  /* Hover state red */
+  --primary-active: #b71c1c; /* Active state red */
+  --primary-text: #ffffff;   /* White text for contrast */
+}
+
+/* Update button styles */
+button {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+button:active {
+  background-color: var(--primary-active);
+}
+
+/* Update link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Update border colors */
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+/* Update background colors */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-primary-light {
+  background-color: var(--primary-light);
+}
+
+/* Update text colors */
+.text-primary {
+  color: var(--primary-color);
+}
+
+/* Update focus states */
+:focus {
+  outline-color: var(--primary-color);
+}
+
+/* Update selection color */
+::selection {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
 } 

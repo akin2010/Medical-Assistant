@@ -3,11 +3,14 @@
 /.pnp
 .pnp.js
 
+.env
 # testing
 /coverage
 
 # production
 /build
+
+/public
 
 # misc
 .DS_Store
@@ -25,3 +28,4 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo 
+.env

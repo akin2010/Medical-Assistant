@@ -36,12 +36,8 @@ class StorageService {
     }
 
     try {
-      if (messages.length > 0) {
-        const currentChat = {
-          messages: messages,
-          timestamp: new Date().toISOString()
-        };
-        window.sessionStorage.setItem(STORAGE_KEYS.CURRENT_CHAT, JSON.stringify(currentChat));
+      if (messages && messages.length > 0) {
+        window.sessionStorage.setItem(STORAGE_KEYS.CURRENT_CHAT, JSON.stringify(messages));
         return true;
       }
       return false;
@@ -61,8 +57,8 @@ class StorageService {
       if (!currentChat) return [];
 
       const parsedChat = JSON.parse(currentChat);
-      if (Array.isArray(parsedChat.messages)) {
-        return parsedChat.messages;
+      if (Array.isArray(parsedChat)) {
+        return parsedChat;
       }
       return [];
     } catch (error) {

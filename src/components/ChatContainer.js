@@ -22,6 +22,10 @@ function ChatContainer({ messages, onSendMessage, isTyping }) {
     formattedText = formattedText.replace(/^\s*[-*]\s+(.*)$/gm, '<li>$1</li>');
     // Replace numbered lists
     formattedText = formattedText.replace(/^\s*\d+\.\s+(.*)$/gm, '<li>$1</li>');
+    // Replace headings (## Heading)
+    formattedText = formattedText.replace(/^##\s+(.*)$/gm, '<h3>$1</h3>');
+    // Replace subheadings (# Subheading)
+    formattedText = formattedText.replace(/^#\s+(.*)$/gm, '<h2>$1</h2>');
     // Add line breaks
     formattedText = formattedText.replace(/\n/g, '<br />');
     
@@ -51,7 +55,7 @@ function ChatContainer({ messages, onSendMessage, isTyping }) {
             <div className="welcome-message">
               <h1>Medical AI Assistant</h1>
               <p>Ask me anything about medical conditions, symptoms, or general health advice.</p>
-              <p>Please note: This is for informational purposes only and not a substitute for professional medical advice.</p>
+              <p>I can provide detailed information about symptoms, treatments, medications, and lifestyle changes.</p>
             </div>
           ) : (
             <>
@@ -91,7 +95,7 @@ function ChatContainer({ messages, onSendMessage, isTyping }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Type your medical question here..."
+              placeholder="Describe your symptoms or ask about a medical condition..."
               rows={1}
             />
             <button type="submit" disabled={isTyping}>
@@ -99,7 +103,7 @@ function ChatContainer({ messages, onSendMessage, isTyping }) {
             </button>
           </form>
           <div className="disclaimer">
-            <p>This AI assistant provides general medical information. Always consult a healthcare professional for medical advice.</p>
+            <p>For educational purposes only. Consult healthcare professionals for medical advice.</p>
           </div>
         </div>
       </div>

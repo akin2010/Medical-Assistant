@@ -1,6 +1,6 @@
 .sidebar {
   width: 250px;
-  background-color: #8B0000;
+  background-color: var(--primary-dark);
   padding: 20px;
   height: 100vh;
   display: flex;
@@ -14,18 +14,36 @@
 
 .new-chat-button {
   background-color: white;
-  color: #8B0000;
+  color: var(--primary-dark);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .new-chat-button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--primary-light);
+}
+
+.new-chat-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.new-chat-button.loading {
+  background-color: var(--primary-light);
+  cursor: wait;
+}
+
+.new-chat-button i {
+  font-size: 14px;
 }
 
 .chat-history {
@@ -39,7 +57,7 @@
 }
 
 .no-chats {
-  color: #ffcccc;
+  color: var(--primary-light);
   font-style: italic;
   text-align: center;
   margin-top: 20px;
@@ -71,7 +89,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: #ffcccc;
+  color: var(--primary-light);
 }
 
 .chat-date {
@@ -81,7 +99,7 @@
 .delete-chat {
   background-color: transparent;
   border: none;
-  color: #ff4444;
+  color: var(--primary-light);
   cursor: pointer;
   padding: 2px 5px;
   font-size: 12px;
@@ -89,7 +107,7 @@
 }
 
 .delete-chat:hover {
-  color: #cc0000;
+  color: var(--primary-color);
 }
 
 /* Responsive design */
